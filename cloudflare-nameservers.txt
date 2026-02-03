@@ -1,0 +1,15 @@
+# Cloudflare - Nameservers para luzherrera.cl
+
+Configura estos nameservers en tu registrador del dominio (Nic Chile, GoDaddy, etc.):
+
+  1. titan.ns.cloudflare.com
+  2. kelly.ns.cloudflare.com
+
+Pasos:
+- Entra al panel donde gestionas el dominio.
+- Busca "Servidores de nombres" / "Nameservers" / "DNS".
+- Elige "Personalizados" o "Cambiar nameservers".
+- Pega los dos de arriba (solo esos dos, en ese orden si el registrador pide orden).
+- Guarda. La propagación puede tardar hasta 24-48 h.
+
+Cuando Cloudflare detecte que el dominio ya apunta a ellos, el sitio pasará a usar la DNS de Cloudflare (y podrás configurar registros A/CNAME, SSL, etc. en el dashboard de Cloudflare).

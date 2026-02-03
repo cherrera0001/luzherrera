@@ -158,6 +158,10 @@
       background: rgba(139, 69, 19, 0.08);
       transform: translateY(-1px);
     }
+    .btn:focus-visible, .testimonioCardBtn:focus-visible, .bankBox:focus-visible {
+      outline: 2px solid var(--earth-2);
+      outline-offset: 2px;
+    }
 
     /* Historia */
     #historia {
@@ -345,14 +349,32 @@
       margin: 0;
     }
 
-    .testimonioCard .reelLabel {
-      display: inline-flex;
+    .testimonioCardActions {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.5rem;
       margin-top: 0.75rem;
+    }
+    .testimonioCard .reelLabel {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--earth);
+    }
+    .testimonioCardBtn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--earth);
+      background: transparent;
+      color: var(--earth);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .testimonioCardBtn:hover {
+      background: rgba(139, 69, 19, 0.08);
     }
 
     /* Actualizaciones */
@@ -384,6 +406,44 @@
       color: var(--earth);
       font-weight: 700;
     }
+    #actualizaciones .timelineNote {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Transparencia y Confianza */
+    #transparencia {
+      padding: 2rem 0 2.5rem;
+    }
+    #transparencia .card {
+      border-left-color: var(--earth-light);
+    }
+    #transparencia ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #transparencia li {
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    #transparencia li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--earth);
+      font-weight: 700;
+    }
+    #transparencia a {
+      color: var(--earth);
+      text-decoration: underline;
+    }
+    #transparencia a:hover, #transparencia a:focus {
+      text-decoration: none;
+    }
 
     footer {
       text-align: center;
@@ -399,6 +459,87 @@
 
     footer a:hover {
       text-decoration: underline;
+    }
+    footer a:focus {
+      outline: 2px solid var(--earth);
+      outline-offset: 2px;
+    }
+
+    /* Barra fija CTA: móvil (sticky) y desktop (persistente) */
+    .stickyBar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      padding-bottom: calc(0.5rem + var(--safe-bottom));
+      background: var(--bg-card);
+      box-shadow: 0 -2px 12px rgba(93, 41, 6, 0.12);
+      z-index: 900;
+      border-top: 1px solid rgba(139, 69, 19, 0.12);
+    }
+    .stickyBar .btn {
+      flex: 1;
+      min-height: 44px;
+      font-size: 0.95rem;
+    }
+    .stickyBar .btn:first-of-type {
+      background: var(--earth);
+      color: var(--white);
+    }
+    .stickyBarDesktop {
+      display: none;
+    }
+    @media (min-width: 769px) {
+      .stickyBar {
+        display: none;
+      }
+      .stickyBarDesktop {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        padding-bottom: calc(0.6rem + var(--safe-bottom));
+        background: var(--bg-card);
+        box-shadow: 0 -2px 12px rgba(93, 41, 6, 0.12);
+        z-index: 900;
+        border-top: 1px solid rgba(139, 69, 19, 0.12);
+      }
+      .stickyBarDesktop .btn {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
+      }
+    }
+    .skipLink {
+      position: absolute;
+      top: -100px;
+      left: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--earth-2);
+      color: var(--white);
+      font-size: 0.9rem;
+      text-decoration: none;
+      z-index: 1001;
+      border-radius: 0 0 var(--radius) 0;
+    }
+    .skipLink:focus {
+      top: 0;
+      outline: 2px solid var(--white);
+      outline-offset: 2px;
+    }
+    body.hasStickyBar {
+      padding-bottom: 80px;
+    }
+    @media (min-width: 769px) {
+      body.hasStickyBar {
+        padding-bottom: 70px;
+      }
     }
 
     /* Dinamismo: entrada en vista y al cargar */
@@ -482,8 +623,9 @@
     }
   </style>
 </head>
-<body>
-  <main>
+<body class="hasStickyBar">
+  <a href="#ayudar" class="skipLink">Ir a cómo ayudar</a>
+  <main id="main">
     <header class="hero">
       <div class="container">
         <div class="heroBody">
@@ -540,7 +682,11 @@
             <div class="testimonioCardBody">
               <h3>Luz Herrera y su esposo</h3>
               <p>Testimonio en video desde Punta de Parra.</p>
-              <span class="reelLabel">Ver reel en Instagram →</span>
+              <div class="testimonioCardActions">
+                <span class="reelLabel">Ver reel →</span>
+                <button type="button" class="testimonioCardBtn" data-action="copy" aria-label="Copiar enlace del testimonio 1">Copiar enlace</button>
+                <button type="button" class="testimonioCardBtn" data-action="share" aria-label="Compartir testimonio 1">Compartir</button>
+              </div>
             </div>
           </a>
           <a class="testimonioCard reveal delay-1" href="https://www.instagram.com/reel/DT1KzgiDwhz/?igsh=MXZ0bjg1cG5laHFzdA==" target="_blank" rel="noopener noreferrer" title="Ver reel en Instagram">
@@ -551,7 +697,11 @@
             <div class="testimonioCardBody">
               <h3>Su nieto (quien habla en este sitio)</h3>
               <p>Es quien dice «mis abuelos» en el mensaje de arriba. Testimonio en video.</p>
-              <span class="reelLabel">Ver reel en Instagram →</span>
+              <div class="testimonioCardActions">
+                <span class="reelLabel">Ver reel →</span>
+                <button type="button" class="testimonioCardBtn" data-action="copy" aria-label="Copiar enlace del testimonio 2">Copiar enlace</button>
+                <button type="button" class="testimonioCardBtn" data-action="share" aria-label="Compartir testimonio 2">Compartir</button>
+              </div>
             </div>
           </a>
         </div>
@@ -567,6 +717,21 @@
             <li>Campaña activa. Cualquier aporte ayuda.</li>
             <li>Testimonios en video de Luz, su esposo y su nieto en Instagram.</li>
             <li>Datos para transferir verificados (CuentaRUT Banco Estado).</li>
+          </ul>
+          <p class="timelineNote" id="timelinePlaceholder">[MISSING: cuando haya avances, agregar aquí fecha + 2 hitos concretos].</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="transparencia">
+      <div class="container">
+        <div class="card reveal">
+          <h2>Transparencia y Confianza</h2>
+          <ul>
+            <li><strong>Apoyo directo:</strong> Sin intermediarios ni comisiones. Tu aporte va directo a Luz Herrera (CuentaRUT Banco Estado).</li>
+            <li><strong>Ubicación verificable:</strong> Punta de Parra, Tomé, Región del Biobío, Chile.</li>
+            <li><strong>Fuente testimonial:</strong> Videos en Instagram — <a href="https://www.instagram.com/reel/DURf6q-D-_q/" target="_blank" rel="noopener noreferrer">reel Luz y esposo</a>, <a href="https://www.instagram.com/reel/DT1KzgiDwhz/" target="_blank" rel="noopener noreferrer">reel nieto</a>.</li>
+            <li><strong>Actualizaciones:</strong> Este sitio se actualiza con hitos cuando hay novedades (ver sección Actualizaciones).</li>
           </ul>
         </div>
       </div>
@@ -596,10 +761,22 @@
 
     <footer class="container">
       <p>Comparte esta campaña. Cada aporte cuenta. <a href="#testimonios" id="linkReel">Ver testimonios en Instagram</a></p>
+      <p>Fuente testimonial: <a href="https://www.instagram.com/reel/DURf6q-D-_q/" target="_blank" rel="noopener noreferrer">Instagram (reel)</a></p>
+      <p><a href="https://github.com/cherrera0001/luzherrera" target="_blank" rel="noopener noreferrer">Ver código fuente en GitHub →</a></p>
     </footer>
   </main>
 
-  <div class="toast" id="toast" aria-live="polite">Datos copiados al portapapeles</div>
+  <nav class="stickyBar" aria-label="Acciones rápidas para ayudar">
+    <button type="button" class="btn" id="stickyCopyBank" aria-label="Copiar datos bancarios">Copiar datos</button>
+    <a class="btn secondary" href="#" id="stickyWhatsApp" aria-label="Contactar por WhatsApp">WhatsApp</a>
+  </nav>
+  <nav class="stickyBarDesktop" aria-label="Acciones rápidas para ayudar">
+    <button type="button" class="btn" id="stickyCopyBankDesktop" aria-label="Copiar datos bancarios">Copiar datos</button>
+    <a class="btn secondary" href="#" id="stickyWhatsAppDesktop" aria-label="Contactar por WhatsApp">WhatsApp</a>
+    <button type="button" class="btn secondary" id="stickySharePage" aria-label="Compartir campaña">Compartir campaña</button>
+  </nav>
+
+  <div class="toast" id="toast" aria-live="polite" role="status">Datos copiados al portapapeles</div>
 
   <script>
     const CONFIG = {
@@ -665,6 +842,92 @@ CuentaRUT
     if (btnCopyBank) {
       btnCopyBank.addEventListener('click', copyBankToClipboard);
     }
+
+    var stickyCopy = document.getElementById('stickyCopyBank');
+    var stickyWa = document.getElementById('stickyWhatsApp');
+    var stickyCopyD = document.getElementById('stickyCopyBankDesktop');
+    var stickyWaD = document.getElementById('stickyWhatsAppDesktop');
+    var stickyShare = document.getElementById('stickySharePage');
+    if (stickyCopy) { stickyCopy.addEventListener('click', copyBankToClipboard); }
+    if (stickyWa) {
+      stickyWa.href = '#';
+      stickyWa.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
+    }
+    if (stickyCopyD) { stickyCopyD.addEventListener('click', copyBankToClipboard); }
+    if (stickyWaD) {
+      stickyWaD.href = '#';
+      stickyWaD.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
+    }
+    function sharePage() {
+      var url = window.location.href;
+      var title = 'Campaña Luz Herrera – Punta de Parra';
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).then(function() {
+          showToast('Compartido.');
+        }).catch(function() {
+          copyUrlAndToast(url);
+        });
+      } else {
+        copyUrlAndToast(url);
+      }
+    }
+    function copyUrlAndToast(url) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Enlace copiado. Compártelo por WhatsApp o donde quieras.');
+      }).catch(function() {
+        showToast('No se pudo copiar el enlace.');
+      });
+    }
+    if (stickyShare) { stickyShare.addEventListener('click', sharePage); }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(function() {
+        toast.classList.remove('show');
+      }, CONFIG.toastDuration);
+    }
+
+    document.querySelectorAll('.testimonioCard').forEach(function(card) {
+      var url = card.getAttribute('href');
+      if (!url) return;
+      var copyBtn = card.querySelector('[data-action="copy"]');
+      var shareBtn = card.querySelector('[data-action="share"]');
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          navigator.clipboard.writeText(url).then(function() {
+            showToast('Enlace copiado. Pégalo donde quieras compartir.');
+          }).catch(function() {
+            showToast('No se pudo copiar.');
+          });
+        });
+      }
+      if (shareBtn) {
+        shareBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var title = 'Testimonio – Campaña Luz Herrera';
+          if (navigator.share) {
+            navigator.share({ title: title, url: url }).then(function() {
+              showToast('Compartido.');
+            }).catch(function() {
+              navigator.clipboard.writeText(url).then(function() {
+                showToast('Enlace copiado. Pégalo para compartir.');
+              });
+            });
+          } else {
+            navigator.clipboard.writeText(url).then(function() {
+              showToast('Enlace copiado. Pégalo para compartir.');
+            }).catch(function() {
+              showToast('No se pudo copiar.');
+            });
+          }
+        });
+      }
+    });
 
     /* Dinamismo: animaciones al entrar en vista */
     (function() {

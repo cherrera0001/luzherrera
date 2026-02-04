@@ -483,7 +483,8 @@
     .stickyBar .btn {
       flex: 1;
       min-height: 44px;
-      font-size: 0.95rem;
+      font-size: 0.875rem;
+      padding: 0.5rem 0.5rem;
     }
     .stickyBar .btn:first-of-type {
       background: var(--earth);
@@ -643,7 +644,8 @@
 
           <div class="ctaRow reveal delay-3">
             <a class="btn" href="#ayudar">Ayudar a reconstruir</a>
-            <a class="btn secondary" id="btnWhatsAppTop" href="#">Contactar a la familia</a>
+            <a class="btn secondary" id="btnWhatsAppTop" href="#" aria-label="Contactar por WhatsApp">WhatsApp</a>
+            <a class="btn secondary" id="btnCallTop" href="#" aria-label="Llamar directamente">Llamar</a>
           </div>
         </div>
       </div>
@@ -754,7 +756,8 @@
         <button type="button" class="btn btnCopy" id="btnCopyBank" aria-label="Copiar datos para transferir">Copiar para transferir</button>
 
         <div class="ctaRow reveal delay-3" style="margin-top: 1.5rem;">
-          <a class="btn secondary" id="btnWhatsAppBottom" href="#">Contactar por WhatsApp</a>
+          <a class="btn secondary" id="btnWhatsAppBottom" href="#" aria-label="Contactar por WhatsApp">WhatsApp</a>
+          <a class="btn secondary" id="btnCallBottom" href="#" aria-label="Llamar directamente">Llamar</a>
         </div>
       </div>
     </section>
@@ -769,10 +772,12 @@
   <nav class="stickyBar" aria-label="Acciones rápidas para ayudar">
     <button type="button" class="btn" id="stickyCopyBank" aria-label="Copiar datos bancarios">Copiar datos</button>
     <a class="btn secondary" href="#" id="stickyWhatsApp" aria-label="Contactar por WhatsApp">WhatsApp</a>
+    <a class="btn secondary" href="#" id="stickyCall" aria-label="Llamar directamente">Llamar</a>
   </nav>
   <nav class="stickyBarDesktop" aria-label="Acciones rápidas para ayudar">
     <button type="button" class="btn" id="stickyCopyBankDesktop" aria-label="Copiar datos bancarios">Copiar datos</button>
     <a class="btn secondary" href="#" id="stickyWhatsAppDesktop" aria-label="Contactar por WhatsApp">WhatsApp</a>
+    <a class="btn secondary" href="#" id="stickyCallDesktop" aria-label="Llamar directamente">Llamar</a>
     <button type="button" class="btn secondary" id="stickySharePage" aria-label="Compartir campaña">Compartir campaña</button>
   </nav>
 
@@ -780,7 +785,8 @@
 
   <script>
     const CONFIG = {
-      phone: "+569XXXXXXXX",
+      phoneWhatsApp: "+56965667481",
+      phoneCall: "965516139",
       waMessage: "Hola, vi el caso de la Sra. Luz Herrera y quiero ayudar.",
       igLink: "https://www.instagram.com/reel/C4...",
       bankText: `Luz Herrera
@@ -793,14 +799,20 @@ CuentaRUT
 
     const btnWaTop = document.getElementById('btnWhatsAppTop');
     const btnWaBottom = document.getElementById('btnWhatsAppBottom');
+    const btnCallTop = document.getElementById('btnCallTop');
+    const btnCallBottom = document.getElementById('btnCallBottom');
     const bankBox = document.getElementById('bankBox');
     const btnCopyBank = document.getElementById('btnCopyBank');
     const toast = document.getElementById('toast');
     const linkReel = document.getElementById('linkReel');
 
     function openWhatsApp() {
-      const url = 'https://wa.me/' + CONFIG.phone.replace(/\D/g, '') + '?text=' + encodeURIComponent(CONFIG.waMessage);
+      const url = 'https://wa.me/' + CONFIG.phoneWhatsApp.replace(/\D/g, '') + '?text=' + encodeURIComponent(CONFIG.waMessage);
       window.open(url, '_blank', 'noopener');
+    }
+
+    function openPhone() {
+      window.location.href = 'tel:' + CONFIG.phoneCall.replace(/\D/g, '');
     }
 
     btnWaTop.href = '#';
@@ -813,6 +825,18 @@ CuentaRUT
     btnWaBottom.addEventListener('click', function(e) {
       e.preventDefault();
       openWhatsApp();
+    });
+
+    btnCallTop.href = '#';
+    btnCallTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPhone();
+    });
+
+    btnCallBottom.href = '#';
+    btnCallBottom.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPhone();
     });
 
     function copyBankToClipboard() {
@@ -845,18 +869,28 @@ CuentaRUT
 
     var stickyCopy = document.getElementById('stickyCopyBank');
     var stickyWa = document.getElementById('stickyWhatsApp');
+    var stickyCall = document.getElementById('stickyCall');
     var stickyCopyD = document.getElementById('stickyCopyBankDesktop');
     var stickyWaD = document.getElementById('stickyWhatsAppDesktop');
+    var stickyCallD = document.getElementById('stickyCallDesktop');
     var stickyShare = document.getElementById('stickySharePage');
     if (stickyCopy) { stickyCopy.addEventListener('click', copyBankToClipboard); }
     if (stickyWa) {
       stickyWa.href = '#';
       stickyWa.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
     }
+    if (stickyCall) {
+      stickyCall.href = '#';
+      stickyCall.addEventListener('click', function(e) { e.preventDefault(); openPhone(); });
+    }
     if (stickyCopyD) { stickyCopyD.addEventListener('click', copyBankToClipboard); }
     if (stickyWaD) {
       stickyWaD.href = '#';
       stickyWaD.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
+    }
+    if (stickyCallD) {
+      stickyCallD.href = '#';
+      stickyCallD.addEventListener('click', function(e) { e.preventDefault(); openPhone(); });
     }
     function sharePage() {
       var url = window.location.href;

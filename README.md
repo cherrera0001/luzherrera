@@ -40,7 +40,7 @@ npm install
 npm run build:images
 ```
 
-`npm run build:images` genera en `/assets` las versiones optimizadas (AVIF, WebP, JPG) a partir de `luzherrera.png`, `luzherrera.jpg` o `luzherrera.jpeg`. Requiere Node.js y el script usa [sharp](https://github.com/lovell/sharp).
+`npm run build:images` genera en `/assets` las versiones optimizadas (AVIF, WebP, JPG) a partir de `luzherrera.png`, `luzherrera.jpg` o `luzherrera.jpeg`. Requiere Node.js y el script usa [sharp](https://github.com/lovell/sharp). Los archivos salen con sufijo versionado (ej. `luz-768-v2.jpg`) para evitar cache antiguo.
 
 ### Desplegar en Vercel
 

@@ -40,7 +40,7 @@ npm install
 npm run build:images
 ```
 
-`npm run build:images` genera en `/assets` las versiones optimizadas (AVIF, WebP, JPG) a partir de `luzherrera.png`. Requiere Node.js y el script usa [sharp](https://github.com/lovell/sharp).
+`npm run build:images` genera en `/assets` las versiones optimizadas (AVIF, WebP, JPG) a partir de `luzherrera.png`, `luzherrera.jpg` o `luzherrera.jpeg`. Requiere Node.js y el script usa [sharp](https://github.com/lovell/sharp).
 
 ### Desplegar en Vercel
 
@@ -100,7 +100,7 @@ Metas orientativas: LCP &lt; 2,5 s en móvil, CLS &lt; 0,1.
 luzherrera/
 ├── index.html          # Página única (HTML + CSS + JS)
 ├── vercel.json         # Headers de seguridad + caché /assets
-├── luzherrera.png      # Imagen fuente del hero
+├── luzherrera.png      # Imagen fuente del hero (o luzherrera.jpg / luzherrera.jpeg)
 ├── assets/             # Imágenes optimizadas (generadas por npm run build:images)
 ├── scripts/
 │   └── build-images.js # Genera AVIF/WebP/JPG (sharp)

@@ -14,15 +14,20 @@ try {
 }
 
 const ROOT = path.join(__dirname, '..');
-const SRC = path.join(ROOT, 'luzherrera.png');
+const SRC_PNG = path.join(ROOT, 'luzherrera.png');
+const SRC_JPG = path.join(ROOT, 'luzherrera.jpg');
+const SRC_JPEG = path.join(ROOT, 'luzherrera.jpeg');
+const SRC = fs.existsSync(SRC_PNG)
+  ? SRC_PNG
+  : (fs.existsSync(SRC_JPG) ? SRC_JPG : (fs.existsSync(SRC_JPEG) ? SRC_JPEG : null));
 const OUT_DIR = path.join(ROOT, 'assets');
 const WIDTHS = [480, 768, 1200];
 const WEBP_QUALITY = 82;
 const AVIF_QUALITY = 65;
 const JPEG_QUALITY = 82;
 
-if (!fs.existsSync(SRC)) {
-  console.error('No se encuentra luzherrera.png en la raíz del proyecto.');
+if (!SRC) {
+  console.error('No se encuentra luzherrera.png, luzherrera.jpg o luzherrera.jpeg en la raiz del proyecto.');
   process.exit(1);
 }
 

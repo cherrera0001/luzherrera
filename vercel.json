@@ -2,6 +2,9 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/favicon.png" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

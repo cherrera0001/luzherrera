@@ -58,7 +58,10 @@ async function run() {
     }
   }
 
-  console.log('Listo. Archivos en /assets');
+  await image.clone().resize(32, 32).png({ compressionLevel: 9 }).toFile(path.join(ROOT, 'favicon.png'));
+  console.log('  favicon.png (32x32)');
+
+  console.log('Listo. Archivos en /assets y favicon.png');
 }
 
 run().catch((err) => {

@@ -3,36 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Sra. Luz Herrera - Ayuda Urgente Punta de Parra | Reconstrucción</title>
-  <meta name="description" content="Campaña de ayuda para Luz Herrera y sus abuelos de 76 años en Punta de Parra. Perdieron todo en el incendio. Necesitamos ayuda urgente para enfrentar las lluvias." />
-  <meta name="keywords" content="Luz Herrera, incendio Punta de Parra, ayuda damnificados, reconstrucción Biobío, donación directa" />
+  <title>Concurso Solidario – Rifa Punta de Parra | Ayuda a la abuela Luz</title>
+  <meta name="description" content="Rifa solidaria para ayudar a la familia afectada por el incendio en Punta de Parra. Premios increíbles. Número $1.500. Mercado Pago, PayPal y WhatsApp." />
+  <meta name="keywords" content="rifa solidaria, Punta de Parra, concurso solidario, ayuda damnificados, Mercado Pago, PayPal" />
 
-  <meta property="og:title" content="Ayudemos a la Sra. Luz Herrera - Punta de Parra" />
-  <meta property="og:description" content="Mis abuelos de 76 años perdieron todo. Tienen enfermedades crónicas y viven en una casa de emergencia. Ayúdanos a reconstruir antes de las lluvias." />
-  <meta property="og:image" content="https://luzherrera.cl/assets/luz-1200-v2.jpg" />
-  <link rel="preload" as="image" href="/assets/luz-768-v2.webp" type="image/webp" />
+  <meta property="og:title" content="Concurso Solidario – Rifa para Punta de Parra" />
+  <meta property="og:description" content="Participa en la rifa solidaria. Tu aporte ayuda a una familia afectada por el incendio. Número $1.500." />
+  <meta property="og:image" content="https://luzherrera.cl/RIFA-1.png" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_CL" />
 
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --earth: #8B4513;
-      --earth-2: #5D2906;
-      --earth-light: #a0522d;
-      --bg: #faf8f5;
-      --bg-card: #fff;
-      --text: #2c2416;
-      --text-muted: #5c5344;
-      --accent: #c45c26;
-      --white: #fff;
-      --shadow: 0 4px 20px rgba(93, 41, 6, 0.08);
+      --mp: #F19F4D;
+      --paypal: #F7E052;
+      --wa: #4ADE80;
+      --wa-icon: #25D366;
+      --text: #1a1a1a;
+      --text-muted: #555;
+      --card-bg: #fff;
       --radius: 12px;
-      --transition: 0.2s ease;
-      --touch-min: 44px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
       --safe-bottom: env(safe-area-inset-bottom, 0);
       --safe-left: env(safe-area-inset-left, 0);
       --safe-right: env(safe-area-inset-right, 0);
@@ -50,961 +48,274 @@
     }
 
     body {
-      font-family: 'Source Sans 3', -apple-system, sans-serif;
-      background: var(--bg);
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      background: linear-gradient(165deg, #fdf2f8 0%, #f5e6ff 35%, #ede9fe 70%, #fce7f3 100%);
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
-      font-size: 1rem;
       padding-left: var(--safe-left);
       padding-right: var(--safe-right);
     }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
+    /* Formas geométricas de fondo (estilo Carrd) */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: min(80vw, 400px);
+      height: min(80vw, 400px);
+      background: radial-gradient(circle, rgba(236,72,153,0.2) 0%, transparent 70%);
+      top: -10%;
+      right: -15%;
+    }
+    body::after {
+      width: min(60vw, 280px);
+      height: min(60vw, 280px);
+      background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%);
+      bottom: 10%;
+      left: -10%;
     }
 
-    /* Hero */
-    .hero {
-      padding: 2rem 0 3rem;
-      text-align: center;
+    .page {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 3rem;
+      min-height: 100vh;
     }
 
-    .heroBody picture {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 1.5rem;
-      max-width: 320px;
-    }
-    .heroBody .heroImg {
+    .card {
       width: 100%;
-      max-width: 320px;
-      height: auto;
+      max-width: 420px;
+      background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      display: block;
+      padding: 1.75rem 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .heroBody h1 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 400;
-      color: var(--earth-2);
+    h1 {
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      color: var(--text);
       margin-bottom: 1rem;
       line-height: 1.3;
     }
 
-    .heroBody .heroAttribution {
-      font-size: 0.9rem;
-      color: var(--earth);
-      font-weight: 600;
-      margin: 0 auto 0.35rem;
-      font-style: italic;
-    }
-    .heroBody .lead {
-      font-size: 1.1rem;
+    .lead {
+      font-size: 0.95rem;
       color: var(--text-muted);
-      max-width: 560px;
-      margin: 0 auto 1.75rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      max-width: 36em;
     }
 
-    .ctaRow {
+    .poster-wrap {
+      width: 100%;
+      margin: 1rem 0 1.5rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .poster-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: middle;
+    }
+
+    .pay-instruction {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .btn-group {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       gap: 0.75rem;
-      justify-content: center;
-      align-items: stretch;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: var(--touch-min);
-      padding: 0.75rem 1.5rem;
+      width: 100%;
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
       font-family: inherit;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       border-radius: var(--radius);
-      transition: background var(--transition), color var(--transition), transform 0.15s ease;
-      cursor: pointer;
       border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
+      color: #000;
     }
 
-    .btn:first-of-type {
-      background: var(--earth);
-      color: var(--white);
+    .btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
-    .btn:first-of-type:hover {
-      background: var(--earth-2);
-      transform: translateY(-1px);
-    }
-
-    .btn.secondary {
-      background: var(--bg-card);
-      color: var(--earth);
-      border: 2px solid var(--earth);
-    }
-
-    .btn.secondary:hover {
-      background: rgba(139, 69, 19, 0.08);
-      transform: translateY(-1px);
-    }
-    .btn:focus-visible, .testimonioCardBtn:focus-visible, .bankBox:focus-visible {
-      outline: 2px solid var(--earth-2);
+    .btn:focus-visible {
+      outline: 2px solid var(--text);
       outline-offset: 2px;
     }
 
-    /* Historia */
-    #historia {
-      padding: 2.5rem 0 3rem;
+    .btn-mp {
+      background: var(--mp);
     }
 
-    .grid {
-      display: grid;
-      gap: 1.5rem;
+    .btn-paypal {
+      background: var(--paypal);
     }
 
-    .card {
-      background: var(--bg-card);
-      padding: 1.75rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--earth);
+    .btn-wa {
+      background: var(--wa);
+      color: #000;
     }
 
-    .card h2 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.35rem;
-      color: var(--earth-2);
-      margin-bottom: 0.75rem;
-    }
-
-    .card .p {
-      color: var(--text);
-      font-size: 1rem;
-      word-wrap: break-word;
-    }
-
-    /* Ayudar */
-    #ayudar {
-      padding: 2rem 0 3.5rem;
-      text-align: center;
-    }
-
-    #ayudar h2 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.5rem;
-      color: var(--earth-2);
-      margin-bottom: 1rem;
-    }
-
-    #ayudar .bankBox {
-      background: var(--bg-card);
-      padding: 1.25rem 1rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin: 1.25rem auto;
-      max-width: 400px;
-      text-align: left;
-      font-family: monospace;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 0.95rem;
-      color: var(--text);
-      border: 1px solid rgba(139, 69, 19, 0.15);
-      min-height: var(--touch-min);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    #ayudar .copyHint {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-    #ayudar .copyHint--above {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-    #ayudar .btnCopy {
-      margin-top: 0.75rem;
-      width: 100%;
-      max-width: 280px;
-      background: var(--earth);
-      color: var(--white);
-    }
-    #ayudar .btnCopy:hover {
-      background: var(--earth-2);
-    }
-
-    .toast {
-      position: fixed;
-      bottom: calc(1.5rem + var(--safe-bottom));
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      max-width: calc(100vw - 2rem);
-      background: var(--earth-2);
-      color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--radius);
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      z-index: 1000;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    /* Testimonios */
-    #testimonios {
-      padding: 2.5rem 0 3rem;
-    }
-
-    #testimonios h2 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.5rem;
-      color: var(--earth-2);
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .testimonioCard {
-      display: block;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--earth);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      min-height: var(--touch-min);
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      overflow: hidden;
-    }
-
-    .testimonioCard:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(93, 41, 6, 0.12);
-    }
-    .testimonioCard:hover .testimonioCardPlayIcon { opacity: 1; transform: scale(1.05); }
-
-    .testimonioCardPreview {
-      background: linear-gradient(135deg, var(--earth-2) 0%, var(--earth) 100%);
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-    .testimonioCardPlayIcon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      color: var(--earth-2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      line-height: 1;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .testimonioCardBadge {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .testimonioCardBody {
-      padding: 1.25rem 1.5rem;
-    }
-    .testimonioCard h3 {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.15rem;
-      color: var(--earth-2);
-      margin-bottom: 0.35rem;
-    }
-
-    .testimonioCard p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .testimonioCardActions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-    }
-    .testimonioCard .reelLabel {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--earth);
-    }
-    .testimonioCardBtn {
-      font-family: inherit;
-      font-size: 0.8rem;
-      padding: 0.35rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid var(--earth);
-      background: transparent;
-      color: var(--earth);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-    .testimonioCardBtn:hover {
-      background: rgba(139, 69, 19, 0.08);
-    }
-
-    /* Actualizaciones */
-    #actualizaciones {
-      padding: 2rem 0 2.5rem;
-    }
-    #actualizaciones .card {
-      border-left-color: var(--earth-light);
-    }
-    #actualizaciones .actualizacionFecha {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    #actualizaciones ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    #actualizaciones li {
-      padding: 0.25rem 0 0.25rem 1.25rem;
-      position: relative;
-      font-size: 0.95rem;
-    }
-    #actualizaciones li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--earth);
-      font-weight: 700;
-    }
-    #actualizaciones .timelineNote {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 1rem;
-      font-style: italic;
-    }
-
-    /* Transparencia y Confianza */
-    #transparencia {
-      padding: 2rem 0 2.5rem;
-    }
-    #transparencia .card {
-      border-left-color: var(--earth-light);
-    }
-    #transparencia ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    #transparencia li {
-      padding: 0.35rem 0 0.35rem 1.5rem;
-      position: relative;
-      font-size: 0.95rem;
-    }
-    #transparencia li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--earth);
-      font-weight: 700;
-    }
-    #transparencia a {
-      color: var(--earth);
-      text-decoration: underline;
-    }
-    #transparencia a:hover, #transparencia a:focus {
-      text-decoration: none;
+    .btn .icon {
+      margin-left: 0.5rem;
+      font-size: 1.1em;
     }
 
     footer {
+      margin-top: auto;
+      padding-top: 1.5rem;
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
       color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--earth);
       text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
-    footer a:hover {
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .footer-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .link-campana {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .link-campana a {
+      color: var(--text-muted);
       text-decoration: underline;
     }
-    footer a:focus {
-      outline: 2px solid var(--earth);
-      outline-offset: 2px;
+
+    .link-campana a:hover {
+      color: var(--text);
     }
 
-    /* Barra fija CTA: móvil (sticky) y desktop (persistente) */
-    .stickyBar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      padding-bottom: calc(0.5rem + var(--safe-bottom));
-      background: var(--bg-card);
-      box-shadow: 0 -2px 12px rgba(93, 41, 6, 0.12);
-      z-index: 900;
-      border-top: 1px solid rgba(139, 69, 19, 0.12);
-    }
-    .stickyBar .btn {
-      flex: 1;
-      min-height: 44px;
-      font-size: 0.875rem;
-      padding: 0.5rem 0.5rem;
-    }
-    .stickyBar .btn:first-of-type {
-      background: var(--earth);
-      color: var(--white);
-    }
-    .stickyBarDesktop {
-      display: none;
-    }
-    @media (min-width: 769px) {
-      .stickyBar {
-        display: none;
-      }
-      .stickyBarDesktop {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        justify-content: center;
-        gap: 0.75rem;
-        padding: 0.6rem 1rem;
-        padding-bottom: calc(0.6rem + var(--safe-bottom));
-        background: var(--bg-card);
-        box-shadow: 0 -2px 12px rgba(93, 41, 6, 0.12);
-        z-index: 900;
-        border-top: 1px solid rgba(139, 69, 19, 0.12);
-      }
-      .stickyBarDesktop .btn {
-        padding: 0.5rem 1.25rem;
-        font-size: 0.9rem;
-      }
-    }
-    .skipLink {
-      position: absolute;
-      top: -100px;
-      left: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      background: var(--earth-2);
-      color: var(--white);
-      font-size: 0.9rem;
-      text-decoration: none;
-      z-index: 1001;
-      border-radius: 0 0 var(--radius) 0;
-    }
-    .skipLink:focus {
-      top: 0;
-      outline: 2px solid var(--white);
-      outline-offset: 2px;
-    }
-    body.hasStickyBar {
-      padding-bottom: 80px;
-    }
-    @media (min-width: 769px) {
-      body.hasStickyBar {
-        padding-bottom: 70px;
-      }
-    }
-
-    /* Dinamismo: entrada en vista y al cargar */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
-    }
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal.delay-1 { transition-delay: 0.08s; }
-    .reveal.delay-2 { transition-delay: 0.16s; }
-    .reveal.delay-3 { transition-delay: 0.24s; }
-    .reveal.delay-4 { transition-delay: 0.32s; }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-    /* Móvil primero: pantallas estrechas */
+    /* Responsive: móvil 90% ancho */
     @media (max-width: 480px) {
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      .hero {
-        padding: 1.5rem 0 2.5rem;
-      }
-      .heroBody .heroImg {
-        max-width: 100%;
-      }
-      .heroBody h1 {
-        font-size: 1.5rem;
-      }
-      .heroBody .lead {
-        font-size: 1rem;
-      }
-      .ctaRow {
-        flex-direction: column;
-        width: 100%;
-      }
-      .ctaRow .btn {
-        width: 100%;
-      }
-      #historia, #testimonios {
-        padding: 1.75rem 0 2rem;
+      .page {
+        padding: 1rem 0.75rem 2.5rem;
       }
       .card {
+        width: 90%;
+        max-width: none;
         padding: 1.25rem 1rem;
       }
-      .testimonioCardBody {
-        padding: 1.25rem 1rem;
-      }
-      .card h2, #testimonios h2, #ayudar h2 {
-        font-size: 1.25rem;
-      }
-      #ayudar {
-        padding: 1.5rem 0 2.5rem;
-      }
-      #ayudar .bankBox {
-        padding: 1rem;
-        font-size: 0.9rem;
-      }
-      footer {
-        padding: 1.25rem 1rem;
-        font-size: 0.8125rem;
+      .btn-group {
+        max-width: 100%;
       }
     }
 
-    /* Pantallas muy pequeñas (ej. 320px) */
-    @media (max-width: 360px) {
-      .container {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
+    @media (min-width: 769px) {
+      .card {
+        max-width: 440px;
+        padding: 2rem 1.75rem;
       }
     }
   </style>
 </head>
-<body class="hasStickyBar">
-  <a href="#ayudar" class="skipLink">Ir a cómo ayudar</a>
-  <main id="main">
-    <header class="hero">
-      <div class="container">
-        <div class="heroBody">
-          <picture>
-            <source type="image/avif" srcset="/assets/luz-480-v2.avif 480w, /assets/luz-768-v2.avif 768w, /assets/luz-1200-v2.avif 1200w" sizes="(max-width: 768px) 92vw, 520px" />
-            <source type="image/webp" srcset="/assets/luz-480-v2.webp 480w, /assets/luz-768-v2.webp 768w, /assets/luz-1200-v2.webp 1200w" sizes="(max-width: 768px) 92vw, 520px" />
-            <img class="heroImg reveal" src="/assets/luz-768-v2.jpg" width="520" height="680" alt="Luz Herrera y su esposo en Punta de Parra, Tomé. Familia damnificada del incendio." decoding="async" fetchpriority="high" />
-          </picture>
-          <h1 class="reveal delay-1">Luz Herrera y su familia lo perdieron todo en Punta de Parra.</h1>
-          <p class="heroAttribution reveal delay-2">En palabras de su nieta:</p>
-          <p class="lead reveal delay-2">
-            A sus 76 años, mis abuelos enfrentan el invierno en una casa de emergencia tras ver años de esfuerzo convertidos en cenizas.
-            Con enfermedades crónicas (hipertensión y diabetes) y viviendo solo de su pensión, necesitan nuestra ayuda urgente para pasar su vejez en paz.
-          </p>
+<body>
+  <main class="page">
+    <div class="card">
+      <h1>Concurso Solidario</h1>
+      <p class="lead">
+        Tras el incendio en Punta de Parra, una familia lo perdió todo. Esta rifa es para ayudar a la abuela y su hogar. Cada número cuesta <strong>$1.500</strong> y puedes pagar de forma segura con Mercado Pago, PayPal o contactarnos por WhatsApp.
+      </p>
 
-          <div class="ctaRow reveal delay-3">
-            <a class="btn" href="#ayudar">Ayudar a reconstruir</a>
-            <a class="btn secondary" id="btnWhatsAppTop" href="#" aria-label="Contactar por WhatsApp">WhatsApp</a>
-            <a class="btn secondary" id="btnCallTop" href="#" aria-label="Llamar directamente">Llamar</a>
-          </div>
-        </div>
+      <div class="poster-wrap">
+        <img src="/RIFA-1.png" alt="Afiche promocional de la Rifa Solidaria – Premios y bases" width="1000" height="1200" decoding="async" fetchpriority="high" />
       </div>
-    </header>
 
-    <section id="historia">
-      <div class="container">
-        <div class="grid">
-          <div class="card reveal">
-            <h2>La Realidad en Punta de Parra</h2>
-            <p class="p">
-              La Sra. Luz y su esposo, ambos de 76 años, son damnificados del incendio en Punta de Parra, Tomé.
-              Su casa fue arrasada y hoy viven en condiciones precarias mientras la ayuda ha disminuido drásticamente.
-            </p>
-          </div>
-          <div class="card reveal delay-1">
-            <h2>Salud y Urgencia</h2>
-            <p class="p">
-              La situación es crítica: ambos sufren enfermedades crónicas. La Sra. Luz es hipertensa y diabética; su esposo también tiene diabetes y secuelas físicas graves.
-              Se vienen las lluvias y necesitan un hogar digno donde puedan resguardar su salud.
-            </p>
-          </div>
-        </div>
+      <p class="pay-instruction">
+        Puedes realizar el pago de forma segura con los siguientes medios:
+      </p>
+
+      <div class="btn-group">
+        <a href="https://mpago.la/2vshfPy" target="_blank" rel="noopener noreferrer" class="btn btn-mp">
+          Mercado Pago <span class="icon" aria-hidden="true">♥</span>
+        </a>
+        <a href="https://mpago.la/2vshfPy" target="_blank" rel="noopener noreferrer" class="btn btn-paypal">
+          PayPal <span class="icon" aria-hidden="true">♥</span>
+        </a>
+        <a href="https://wa.me/56965667481?text=Hola!%20Tiene%20n%C3%BAmero%20de%20rifa%20disponible?%20Me%20interesa." target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+          Contacto directo
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
       </div>
-    </section>
+    </div>
 
-    <section id="testimonios">
-      <div class="container">
-        <h2 class="reveal">Sus voces</h2>
-        <div class="grid">
-          <a class="testimonioCard reveal" href="https://www.instagram.com/reel/DURf6q-D-_q/?igsh=bDhuanp1bXJvejU1" target="_blank" rel="noopener noreferrer" title="Ver reel en Instagram">
-            <div class="testimonioCardPreview">
-              <div class="testimonioCardPlayIcon" aria-hidden="true">▶</div>
-              <span class="testimonioCardBadge">Reel · Instagram</span>
-            </div>
-            <div class="testimonioCardBody">
-              <h3>Luz Herrera y su esposo</h3>
-              <p>Testimonio en video desde Punta de Parra.</p>
-              <div class="testimonioCardActions">
-                <span class="reelLabel">Ver reel →</span>
-                <button type="button" class="testimonioCardBtn" data-action="copy" aria-label="Copiar enlace del testimonio 1">Copiar enlace</button>
-                <button type="button" class="testimonioCardBtn" data-action="share" aria-label="Compartir testimonio 1">Compartir</button>
-              </div>
-            </div>
-          </a>
-          <a class="testimonioCard reveal delay-1" href="https://www.instagram.com/reel/DT1KzgiDwhz/?igsh=MXZ0bjg1cG5laHFzdA==" target="_blank" rel="noopener noreferrer" title="Ver reel en Instagram">
-            <div class="testimonioCardPreview">
-              <div class="testimonioCardPlayIcon" aria-hidden="true">▶</div>
-              <span class="testimonioCardBadge">Reel · Instagram</span>
-            </div>
-            <div class="testimonioCardBody">
-              <h3>Su nieta (quien habla en este sitio)</h3>
-              <p>Es quien dice «mis abuelos» en el mensaje de arriba. Testimonio en video.</p>
-              <div class="testimonioCardActions">
-                <span class="reelLabel">Ver reel →</span>
-                <button type="button" class="testimonioCardBtn" data-action="copy" aria-label="Copiar enlace del testimonio 2">Copiar enlace</button>
-                <button type="button" class="testimonioCardBtn" data-action="share" aria-label="Compartir testimonio 2">Compartir</button>
-              </div>
-            </div>
-          </a>
-        </div>
+    <footer>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/reel/DURf6q-D-_q/?igsh=MTZvbXg2Y3dtaGU2NA==" target="_blank" rel="noopener noreferrer" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
+        <a href="https://wa.me/56965667481" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
       </div>
-    </section>
-
-    <section id="actualizaciones">
-      <div class="container">
-        <div class="card reveal">
-          <h2>Actualizaciones</h2>
-          <p class="actualizacionFecha">Última actualización: 3 de febrero de 2026</p>
-          <ul>
-            <li>Campaña activa. Cualquier aporte ayuda.</li>
-            <li>Testimonios en video de Luz, su esposo y su nieta en Instagram.</li>
-            <li>Datos para transferir verificados (CuentaRUT Banco Estado).</li>
-          </ul>
-          <p class="timelineNote" id="timelinePlaceholder">[MISSING: cuando haya avances, agregar aquí fecha + 2 hitos concretos].</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="transparencia">
-      <div class="container">
-        <div class="card reveal">
-          <h2>Transparencia y Confianza</h2>
-          <ul>
-            <li><strong>Apoyo directo:</strong> Sin intermediarios ni comisiones. Tu aporte va directo a Luz Herrera (CuentaRUT Banco Estado).</li>
-            <li><strong>Ubicación verificable:</strong> Punta de Parra, Tomé, Región del Biobío, Chile.</li>
-            <li><strong>Fuente testimonial:</strong> Videos en Instagram — <a href="https://www.instagram.com/reel/DURf6q-D-_q/" target="_blank" rel="noopener noreferrer">reel Luz y esposo</a>, <a href="https://www.instagram.com/reel/DT1KzgiDwhz/" target="_blank" rel="noopener noreferrer">reel nieta</a>.</li>
-            <li><strong>Actualizaciones:</strong> Este sitio se actualiza con hitos cuando hay novedades (ver sección Actualizaciones).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="ayudar">
-      <div class="container">
-        <h2 class="reveal">Cómo ayudar</h2>
-        <p class="lead reveal delay-1" style="margin-bottom: 0;">Puedes transferir directamente o contactar a la familia por WhatsApp.</p>
-
-        <p class="copyHint copyHint--above">Datos para transferir a Luz Herrera (toca para copiar):</p>
-        <div class="bankBox reveal delay-2" id="bankBox" title="Toca para copiar y pegar en tu app de transferencias" role="button" tabindex="0" aria-label="Copiar datos bancarios para transferir">
-          Luz Herrera
-          6.952.644-6
-          Banco Estado
-          CuentaRUT
-          6952644
-        </div>
-        <p class="copyHint">Toca el recuadro para copiar y pegar en tu app de transferencias.</p>
-        <button type="button" class="btn btnCopy" id="btnCopyBank" aria-label="Copiar datos para transferir">Copiar para transferir</button>
-
-        <div class="ctaRow reveal delay-3" style="margin-top: 1.5rem;">
-          <a class="btn secondary" id="btnWhatsAppBottom" href="#" aria-label="Contactar por WhatsApp">WhatsApp</a>
-          <a class="btn secondary" id="btnCallBottom" href="#" aria-label="Llamar directamente">Llamar</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="container">
-      <p>Comparte esta campaña. Cada aporte cuenta. <a href="#testimonios" id="linkReel">Ver testimonios en Instagram</a></p>
-      <p>Fuente testimonial: <a href="https://www.instagram.com/reel/DURf6q-D-_q/" target="_blank" rel="noopener noreferrer">Instagram (reel)</a></p>
-      <p><a href="https://github.com/cherrera0001/luzherrera" target="_blank" rel="noopener noreferrer">Ver código fuente en GitHub →</a></p>
+      <p class="link-campana">
+        <a href="/campana.html">Ver campaña de ayuda directa (Luz Herrera – Punta de Parra)</a>
+      </p>
     </footer>
   </main>
-
-  <nav class="stickyBar" aria-label="Acciones rápidas para ayudar">
-    <button type="button" class="btn" id="stickyCopyBank" aria-label="Copiar datos bancarios">Copiar datos</button>
-    <a class="btn secondary" href="#" id="stickyWhatsApp" aria-label="Contactar por WhatsApp">WhatsApp</a>
-    <a class="btn secondary" href="#" id="stickyCall" aria-label="Llamar directamente">Llamar</a>
-  </nav>
-  <nav class="stickyBarDesktop" aria-label="Acciones rápidas para ayudar">
-    <button type="button" class="btn" id="stickyCopyBankDesktop" aria-label="Copiar datos bancarios">Copiar datos</button>
-    <a class="btn secondary" href="#" id="stickyWhatsAppDesktop" aria-label="Contactar por WhatsApp">WhatsApp</a>
-    <a class="btn secondary" href="#" id="stickyCallDesktop" aria-label="Llamar directamente">Llamar</a>
-    <button type="button" class="btn secondary" id="stickySharePage" aria-label="Compartir campaña">Compartir campaña</button>
-  </nav>
-
-  <div class="toast" id="toast" aria-live="polite" role="status">Datos copiados al portapapeles</div>
-
-  <script>
-    const CONFIG = {
-      phoneWhatsApp: "+56965667481",
-      phoneCall: "965516139",
-      waMessage: "Hola, vi el caso de la Sra. Luz Herrera y quiero ayudar.",
-      igLink: "https://www.instagram.com/reel/C4...",
-      bankText: `Luz Herrera
-6.952.644-6
-Banco Estado
-CuentaRUT
-6952644`,
-      toastDuration: 2800
-    };
-
-    const btnWaTop = document.getElementById('btnWhatsAppTop');
-    const btnWaBottom = document.getElementById('btnWhatsAppBottom');
-    const btnCallTop = document.getElementById('btnCallTop');
-    const btnCallBottom = document.getElementById('btnCallBottom');
-    const bankBox = document.getElementById('bankBox');
-    const btnCopyBank = document.getElementById('btnCopyBank');
-    const toast = document.getElementById('toast');
-    const linkReel = document.getElementById('linkReel');
-
-    function openWhatsApp() {
-      const url = 'https://wa.me/' + CONFIG.phoneWhatsApp.replace(/\D/g, '') + '?text=' + encodeURIComponent(CONFIG.waMessage);
-      window.open(url, '_blank', 'noopener');
-    }
-
-    function openPhone() {
-      window.location.href = 'tel:' + CONFIG.phoneCall.replace(/\D/g, '');
-    }
-
-    btnWaTop.href = '#';
-    btnWaTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      openWhatsApp();
-    });
-
-    btnWaBottom.href = '#';
-    btnWaBottom.addEventListener('click', function(e) {
-      e.preventDefault();
-      openWhatsApp();
-    });
-
-    btnCallTop.href = '#';
-    btnCallTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      openPhone();
-    });
-
-    btnCallBottom.href = '#';
-    btnCallBottom.addEventListener('click', function(e) {
-      e.preventDefault();
-      openPhone();
-    });
-
-    function copyBankToClipboard() {
-      navigator.clipboard.writeText(CONFIG.bankText).then(function() {
-        toast.textContent = 'Datos copiados. Pega en tu app de transferencias.';
-        toast.classList.add('show');
-        setTimeout(function() {
-          toast.classList.remove('show');
-        }, CONFIG.toastDuration);
-      }).catch(function() {
-        toast.textContent = 'No se pudo copiar; selecciona y copia manualmente.';
-        toast.classList.add('show');
-        setTimeout(function() {
-          toast.classList.remove('show');
-          toast.textContent = 'Datos copiados. Pega en tu app de transferencias.';
-        }, CONFIG.toastDuration);
-      });
-    }
-
-    bankBox.addEventListener('click', copyBankToClipboard);
-    bankBox.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        copyBankToClipboard();
-      }
-    });
-    if (btnCopyBank) {
-      btnCopyBank.addEventListener('click', copyBankToClipboard);
-    }
-
-    var stickyCopy = document.getElementById('stickyCopyBank');
-    var stickyWa = document.getElementById('stickyWhatsApp');
-    var stickyCall = document.getElementById('stickyCall');
-    var stickyCopyD = document.getElementById('stickyCopyBankDesktop');
-    var stickyWaD = document.getElementById('stickyWhatsAppDesktop');
-    var stickyCallD = document.getElementById('stickyCallDesktop');
-    var stickyShare = document.getElementById('stickySharePage');
-    if (stickyCopy) { stickyCopy.addEventListener('click', copyBankToClipboard); }
-    if (stickyWa) {
-      stickyWa.href = '#';
-      stickyWa.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
-    }
-    if (stickyCall) {
-      stickyCall.href = '#';
-      stickyCall.addEventListener('click', function(e) { e.preventDefault(); openPhone(); });
-    }
-    if (stickyCopyD) { stickyCopyD.addEventListener('click', copyBankToClipboard); }
-    if (stickyWaD) {
-      stickyWaD.href = '#';
-      stickyWaD.addEventListener('click', function(e) { e.preventDefault(); openWhatsApp(); });
-    }
-    if (stickyCallD) {
-      stickyCallD.href = '#';
-      stickyCallD.addEventListener('click', function(e) { e.preventDefault(); openPhone(); });
-    }
-    function sharePage() {
-      var url = window.location.href;
-      var title = 'Campaña Luz Herrera – Punta de Parra';
-      if (navigator.share) {
-        navigator.share({ title: title, url: url }).then(function() {
-          showToast('Compartido.');
-        }).catch(function() {
-          copyUrlAndToast(url);
-        });
-      } else {
-        copyUrlAndToast(url);
-      }
-    }
-    function copyUrlAndToast(url) {
-      navigator.clipboard.writeText(url).then(function() {
-        showToast('Enlace copiado. Compártelo por WhatsApp o donde quieras.');
-      }).catch(function() {
-        showToast('No se pudo copiar el enlace.');
-      });
-    }
-    if (stickyShare) { stickyShare.addEventListener('click', sharePage); }
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(function() {
-        toast.classList.remove('show');
-      }, CONFIG.toastDuration);
-    }
-
-    document.querySelectorAll('.testimonioCard').forEach(function(card) {
-      var url = card.getAttribute('href');
-      if (!url) return;
-      var copyBtn = card.querySelector('[data-action="copy"]');
-      var shareBtn = card.querySelector('[data-action="share"]');
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          navigator.clipboard.writeText(url).then(function() {
-            showToast('Enlace copiado. Pégalo donde quieras compartir.');
-          }).catch(function() {
-            showToast('No se pudo copiar.');
-          });
-        });
-      }
-      if (shareBtn) {
-        shareBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var title = 'Testimonio – Campaña Luz Herrera';
-          if (navigator.share) {
-            navigator.share({ title: title, url: url }).then(function() {
-              showToast('Compartido.');
-            }).catch(function() {
-              navigator.clipboard.writeText(url).then(function() {
-                showToast('Enlace copiado. Pégalo para compartir.');
-              });
-            });
-          } else {
-            navigator.clipboard.writeText(url).then(function() {
-              showToast('Enlace copiado. Pégalo para compartir.');
-            }).catch(function() {
-              showToast('No se pudo copiar.');
-            });
-          }
-        });
-      }
-    });
-
-    /* Dinamismo: animaciones al entrar en vista */
-    (function() {
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reducedMotion) return;
-
-      var reveals = document.querySelectorAll('.reveal');
-
-      function show(el) {
-        if (el && !el.classList.contains('in-view')) el.classList.add('in-view');
-      }
-
-      function heroEntrance() {
-        var hero = document.querySelector('.heroBody');
-        if (!hero) return;
-        hero.querySelectorAll('.reveal').forEach(function(el, i) {
-          setTimeout(function() { show(el); }, 80 * i);
-        });
-      }
-
-      if (typeof IntersectionObserver !== 'undefined') {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              show(entry.target);
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
-
-        reveals.forEach(function(el) {
-          var inHero = el.closest('.heroBody');
-          if (inHero) return;
-          observer.observe(el);
-        });
-
-        requestAnimationFrame(function() {
-          setTimeout(heroEntrance, 60);
-        });
-      } else {
-        reveals.forEach(show);
-      }
-    })();
-  </script>
 </body>
 </html>
